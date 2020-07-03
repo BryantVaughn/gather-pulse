@@ -4,7 +4,13 @@ const { mongoURI } = require("./config/keys");
 require("./services/passport");
 
 
-mongoose.connect(mongoURI);
+mongoose.connect(
+  mongoURI,
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  }
+);
 
 const app = express();
 require("./routes/authRoutes")(app);
