@@ -2,7 +2,7 @@
 node_modules
 
 # client_keys
-keys.js
+dev.js
 
 # misc
 **/.DS_Store
