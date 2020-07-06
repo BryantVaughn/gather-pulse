@@ -10,17 +10,20 @@ export default function App() {
 	return (
 		<div>
 			<BrowserRouter>
-				<Switch>
-					<Route path="/" exact>
-						<Landing />
-					</Route>
-					<Route path="/surveys" exact>
-						<Dashboard />
-					</Route>
-					<Route path="/surveys/new" exact>
-						<SurveyNew />
-					</Route>
-				</Switch>
+				<div>
+					<Header />
+					<Switch>
+						<Route exact path="/">
+							<Landing />
+						</Route>
+						<Route exact path="/surveys">
+							<Dashboard />
+						</Route>
+						<Route exact path="/surveys/new">
+							<SurveyNew />
+						</Route>
+					</Switch>
+				</div>
 			</BrowserRouter>
 		</div>
 	);
