@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 class Header extends Component {
 	render() {
 		return (
-			<nav>
+			<nav style={{ paddingLeft: '10px', backgroundColor: '#08375b' }}>
 				<div className="nav-wrapper">
 					<a className="left brand-logo">GatherPulse</a>
 					<ul className="right">
 						<li>
-							<a>Login With Google</a>
+							<a>Login with Google</a>
 						</li>
 					</ul>
 				</div>
