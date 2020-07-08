@@ -9,5 +9,6 @@ module.exports = (app) => {
 			description: '$5 for 5 survey credits',
 			source: req.body.id
 		});
+		console.log(charge);
 	});
 };
