@@ -22,5 +22,6 @@ module.exports = (app) => {
 
 		// Use Mailer to send out survey
 		const mailer = new Mailer(survey, surveyTemplate(survey));
+		mailer.send();
 	});
 };
