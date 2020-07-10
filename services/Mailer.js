@@ -5,7 +5,7 @@ const { sendGridKey } = require('../config/keys');
 class Mailer extends helpers.classes.Mail {
 	constructor({ subject, recipients }, htmlContent) {
 		super();
-		this.setFrom('no-reply@gatherpulse.com');
+		this.setFrom('bf_vaughn@hotmail.com');
 		this.setSubject(subject);
 		this.addHtmlContent(htmlContent);
 
