@@ -1,3 +1,5 @@
+const { redirectDomain } = require('../../config/keys');
+
 module.exports = ({ sender, body }) => {
 	return `
     <html>
@@ -7,8 +9,10 @@ module.exports = ({ sender, body }) => {
           <p>Please answer the following question:</p>
           <p>${body}</p>
           <div>
-            <a href="http://localhost:3000">Yes</a>
-            <a href="http://localhost:3000">No</a>
+            <a href="${redirectDomain}/api/surveys/thanks">Yes</a>
+          </div>
+          <div>
+            <a href="${redirectDomain}/api/surveys/thanks">No</a>
           </div>
           <p>Powered by GatherPulse</p>
         </div>
