@@ -14,10 +14,8 @@ class Payments extends Component {
 				stripeKey={process.env.REACT_APP_STRIPE_KEY}
 			>
 				<button
-					className="btn"
+					className="btn grey lighten-4 blue-text text-accent-2"
 					style={{
-						backgroundColor: 'rgba(255,255,255,0.8)',
-						color: '#365c7b',
 						fontWeight: 'bold'
 					}}
 				>
