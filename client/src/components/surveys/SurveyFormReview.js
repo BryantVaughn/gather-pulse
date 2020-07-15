@@ -22,14 +22,13 @@ function SurveyFormReview({ onCancel, formValues, submitSurvey }) {
 				onClick={onCancel}
 			>
 				Back
-				<i className="material-icons left">arrow_back</i>
 			</button>
 			<button
 				className="green white-text btn-flat right"
 				onClick={() => submitSurvey(formValues)}
 			>
 				Send
-				<i className="material-icons left">email</i>
+				<i className="material-icons right">email</i>
 			</button>
 		</div>
 	);
