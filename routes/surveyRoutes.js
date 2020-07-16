@@ -15,13 +15,10 @@ module.exports = (app) => {
 	});
 
 	app.post('/api/surveys/webhooks', (req, res) => {
+		const p = new Path('/api/surveys/:surveyId/:choice');
 		const events = req.body.map(({ url, email }) => {
-			const pathname = new URL(url).pathname;
-			const p = new Path('/api/surveys/:surveyId/:choice');
-			const match = p.test(pathname);
-
-			if (match)
-				return { email, surveyId: match.surveyId, choice: match.choice };
+			const match = p.test(new URL(url).pathname);
+			if (match) return { ...match, email };
 		});
 
 		const filterEvents = events.filter((event) => event);
