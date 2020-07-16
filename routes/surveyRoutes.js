@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const { Path } = require('path-parser');
+const { URL } = require('url');
+
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
@@ -12,7 +15,25 @@ module.exports = (app) => {
 	});
 
 	app.post('/api/surveys/webhooks', (req, res) => {
-		console.log(req.body);
+		const events = req.body.map(({ url, email }) => {
+			const pathname = new URL(url).pathname;
+			const p = new Path('/api/surveys/:surveyId/:choice');
+			const match = p.test(pathname);
+
+			if (match)
+				return { email, surveyId: match.surveyId, choice: match.choice };
+		});
+
+		const filterEvents = events.filter((event) => event);
+		const uniqueEvents = filterEvents.filter(({ email, surveyId }) => {
+			if (this[surveyId] && this[email]) {
+				return false;
+			}
+			this[email] = true;
+			this[surveyId] = true;
+			return true;
+		}, Object.create(null));
+		console.log(uniqueEvents);
 		res.send({});
 	});
 
