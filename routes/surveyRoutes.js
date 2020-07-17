@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const _ = require('lodash');
 const { Path } = require('path-parser');
 const { URL } = require('url');
 
@@ -16,20 +17,18 @@ module.exports = (app) => {
 
 	app.post('/api/surveys/webhooks', (req, res) => {
 		const p = new Path('/api/surveys/:surveyId/:choice');
-		const events = req.body.map(({ url, email }) => {
-			const match = p.test(new URL(url).pathname);
-			if (match) return { ...match, email };
-		});
 
-		const filterEvents = events.filter((event) => event);
-		const uniqueEvents = filterEvents.filter(({ email, surveyId }) => {
-			if (this[surveyId] && this[email]) {
-				return false;
-			}
-			this[email] = true;
-			this[surveyId] = true;
-			return true;
-		}, Object.create(null));
+		const events = _.chain(req.body)
+			.map(({ email, url }) => {
+				const match = p.test(new URL(url).pathname);
+				match
+					? { email, surveyId: match.surveyId, choice: match.choice }
+					: null;
+			})
+			.compact()
+			.uniqBy('email', 'surveyId')
+			.value();
+
 		console.log(uniqueEvents);
 		res.send({});
 	});
