@@ -18,9 +18,9 @@ class SurveyList extends Component {
 							Sent On: {new Date(survey.dateSent).toLocaleDateString()}
 						</p>
 					</div>
-					<div className="card-action">
-						<a>Yes: {survey.yes}</a>
-						<a>No: {survey.no}</a>
+					<div className="card-action" style={{ textTransform: 'uppercase' }}>
+						<p style={{ color: '#018c2d' }}>Yes: {survey.yes}</p>
+						<p style={{ color: '#e55220' }}>No: {survey.no}</p>
 					</div>
 				</div>
 			);
