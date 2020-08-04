@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import formFields from './formFields';
 import * as actions from '../../actions';
+import './styles/SurveyFormReview.css';
 
 function SurveyFormReview({ onCancel, formValues, submitSurvey, history }) {
 	const reviewFields = formFields.map(({ name, label }) => {
 		return (
-			<div key={name}>
-				<label>{label}</label>
+			<div className="review" key={name}>
+				<label className="review-label">{label}</label>
 				<div>{formValues[name]}</div>
 			</div>
 		);
@@ -16,7 +17,7 @@ function SurveyFormReview({ onCancel, formValues, submitSurvey, history }) {
 
 	return (
 		<div>
-			<h5>Please confirm your entries</h5>
+			<h5>Please confirm your entries:</h5>
 			{reviewFields}
 			<button
 				className="yellow darken-3 white-text btn-flat"

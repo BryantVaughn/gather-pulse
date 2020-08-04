@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/SurveyField.css';
 
 export default function SurveyField({
 	input,
@@ -8,7 +9,7 @@ export default function SurveyField({
 	return (
 		<div>
 			<label>{label}</label>
-			<input style={{ marginBottom: '5px' }} {...input} />
+			<input className="input-field" {...input} />
 			<div className="red-text" style={{ marginBottom: '20px' }}>
 				{touched && error}
 			</div>
