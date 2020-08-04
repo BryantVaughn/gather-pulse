@@ -10,9 +10,7 @@ export default function SurveyField({
 		<div>
 			<label>{label}</label>
 			<input className="input-field" {...input} />
-			<div className="red-text" style={{ marginBottom: '20px' }}>
-				{touched && error}
-			</div>
+			<div className="red-text">{touched && error}</div>
 		</div>
 	);
 }
